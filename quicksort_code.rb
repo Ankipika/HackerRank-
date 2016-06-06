@@ -21,8 +21,8 @@ end
 def quicksort(arr,start_index,end_index)
     if (start_index < end_index)
         pivot = partition(arr,start_index, end_index)
-        quicksort(arr, start_index, pivot -1) if (pivot > 0)
-        quicksort(arr, pivot+1, end_index) if (pivot < end_index)
+        quicksort(arr, start_index, pivot -1) 
+        quicksort(arr, pivot+1, end_index) 
     end
 end
 
