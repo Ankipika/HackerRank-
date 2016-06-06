@@ -23,11 +23,20 @@ end
 
 def quicksort(arr,start_index,end_index)
     return if start_index == end_index
-    pivot = partition(arr,start_index, end_index)
-    quicksort(arr, 0, pivot -1) if (pivot > 0)
-    quicksort(arr, pivot+1, arr.length-1) if (pivot+1 < end_index)
+    if (start_index - end_index) == 1
+        if arr[start_index] > arr[end_index]
+            temp = arr[start_index]
+            arr[start_index] = arr[end_index]
+            arr[end_index] = arr[start_index]
+        end
+        return 
+    else
+        pivot = partition(arr,start_index, end_index)
+        quicksort(arr, start_index, pivot -1) if (pivot > 0)
+        quicksort(arr, pivot+1, end_index) if (pivot < end_index)
+    end
 end
 
-arr = (1..999).to_a.sample 5
+arr = (1..999).to_a.sample 20
 quicksort(arr, 0, arr.length-1)
 puts arr.join(" ")
