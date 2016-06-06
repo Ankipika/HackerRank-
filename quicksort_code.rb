@@ -1,8 +1,5 @@
 def  partition(ar,start_index, end_index)
-    pivot_index = start_index + (end_index - start_index)/2
-    pivot_value = ar[pivot_index]
-    ar[pivot_index] = ar[end_index]
-    ar[end_index] = pivot_value
+    pivot_value = ar[end_index]
     i = 0
     j = 0
     while j < end_index 
@@ -22,21 +19,13 @@ def  partition(ar,start_index, end_index)
 end
 
 def quicksort(arr,start_index,end_index)
-    return if start_index == end_index
-    if (start_index - end_index) == 1
-        if arr[start_index] > arr[end_index]
-            temp = arr[start_index]
-            arr[start_index] = arr[end_index]
-            arr[end_index] = arr[start_index]
-        end
-        return 
-    else
+    if (start_index < end_index)
         pivot = partition(arr,start_index, end_index)
         quicksort(arr, start_index, pivot -1) if (pivot > 0)
         quicksort(arr, pivot+1, end_index) if (pivot < end_index)
     end
 end
 
-arr = (1..999).to_a.sample 20
+arr = (1..999).to_a.sample 50
 quicksort(arr, 0, arr.length-1)
 puts arr.join(" ")
