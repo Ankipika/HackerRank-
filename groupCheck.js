@@ -19,10 +19,7 @@
        return false;
      }
    }
-   if (bracketStack.length === 0){
-     return true;
-   }
-   return false;
+   return bracketLength === 0;
    
    function openBracketCharCheck(s) {
      return s === '{' || s === '[' || s === '(';
